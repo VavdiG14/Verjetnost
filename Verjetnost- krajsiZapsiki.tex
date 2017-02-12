@@ -316,14 +316,107 @@
 	\end{Posledica}
 \section{Splošne slučajne spremenljivke}
 \begin{Definicija}
-	Naj bo verjetnostni prostor definiran kot: $(\Omega, \mathcal{F},P)$. Nadalje naj bo $X: \Omega \to \mathbb{R}$. Zahteva, da je X slučajna spremenljivka : $\{ X\le x\} = \{\omega ; X(\omega) \le x\} \in \mathcal{F}$. Potem je $$F_x(x)  = P(X \le x)$$ dobro definirana funkcija $\mathbb{R}\to \mathbb{R}$ in jo imenujemo \textbf{porazdelitvena funkicja}.
+	Naj bo verjetnostni prostor definiran kot: $(\Omega, \mathcal{F},P)$. Nadalje naj bo $X: \Omega \to \mathbb{R}$. Zahteva, da je X slučajna spremenljivka : $\{ X\le x\} = \{\omega ; X(\omega) \le x\} \in \mathcal{F}$. Potem je $$F_X(x)  = P(X \le x)$$ dobro definirana funkcija $\mathbb{R}\to \mathbb{R}$ in jo imenujemo \textbf{porazdelitvena funkicja}.
 \end{Definicija}
 \begin{Trditev}
 	Lastnosti porazdelitvene funkcije:
 	\begin{itemize}
 		\item
+		$F_X(x) \in [0,1] \quad \forall x\in \mathbb{R}$
+		\item
+		$\{X \le x\} \subseteq \{X \le y \} \Rightarrow P(X \le x) \le P(X \le y) $
+		\item
+		$\lim\limits_{t \downarrow x}{F_X(t)} = F_x(x) \quad$ (zvezna iz desne).
+		\item
+		$F_X(x-) = \lim\limits_{t\uparrow x}F_X(t) \le F_X(x) \quad$
+		(ker je $F_X(x)$ nepadajoča ima X v vsaki točki x tudi levo limito).
 		
+		\item
+		Če velja $F_X(x -) = F_X(x)$, potem je $F_X(x)$ zvezna v točki $x\in\mathbb{R}$, sicer pa ima skok v točki $x\in \mathbb{R}$.
+		\item
+		Točk, kjer je porazdelitvena funkcija nezvezna (ima skok) je kvečejmu števno mnogo.
+		\item
+		$$\lim\limits_{x \to \infty}{F_X(x)} = 1$$  
 	\end{itemize}
+\end{Trditev}
+\begin{Definicija}
+	Slučajna spremneljivka X ima\textbf{ gostoto} $\mathbf{p_X(x)}$, če velja:
+	$$P(X\le x) = F_X(x) = \int_{-\infty}^{x}{p_X(t)dt}$$ za vsak $x\in \mathbb{R}$.
+	\\
+	Takim spremenljivkam pravimo absolutno zvezne slučajne spremneljivke. 
+\end{Definicija}
+\begin{Trditev}
+	Če obstaja gostota, potem velja:
+	$$\left( F_X(x) \right)' = \left(\int_{-\infty}^{x}{p_X(t)dt}\right)'= p_X(x)$$
+\end{Trditev}
+\begin{Trditev}(Lastnosti gostote)
+
+		$$p_X(x) \ge 0$$
+		
+		$$\int_{-\infty}^{\infty}{p_X(t) dt} = 1 $$
+\end{Trditev}
+\subsection{Enakomerno zvezna na [a,b] }
+\begin{Definicija}
+	Naj bo X enakomerno zvzena slučajna spremenljivka. $X \sim EZ[a,b]$. Potem je gostota enaka:
+	$$ p_X(x) = \left \{\begin{array}{lr}
+	\frac{1}{b-a} : a\le x\le b \\ 0 :\quad \textnormal{sicer}
+	  \end{array}
+	  \right.
+	$$
+	$$E[X] = \frac{a+b}{2}$$
+	$$Var(X) = \frac{(b-a)^2}{12}$$
+\end{Definicija}
+\subsection{Eksponentna porazdelitev}
+\begin{Definicija}
+	Naj bo X eksponentna slučajna spremeneljivka ($X\sim Exp(\lambda) \quad \lambda >0$). Definirana je kot čas čakanja na dogodek.
+	Njena porazdelitvena funkcija je:
+		$$ F_X(x) = \left \{\begin{array}{lr}
+		1 - e^{-\lambda x}:  x>0 
+		\\
+		0 :\quad \textnormal{sicer}
+		\end{array}\right.$$
+		
+		$$ p_X(x) = \left \{\begin{array}{lr}
+		\lambda\cdot e^{-\lambda x} : x>0
+		\\
+		0 :\quad \textnormal{sicer}
+		\end{array}
+		\right.
+		$$
+		
+		$$E[X] = \frac{1}{\lambda}$$
+		
+		$$Var(X) = \frac{1}{\lambda^2}$$
+\end{Definicija}
+\begin{Opomba}
+	Eksponentna porazdelitev je brez spomina!
+\end{Opomba}
+\subsection{Standardna normalna porazdelitev ali Gaussova porazdelitev}
+\begin{Definicija}
+	Naj bo X standardno normalna slučajna spremneljivka $X\sim \mathcal{N}(0,1)$.
+	Njena gostota je enaka:
+	$$p_X(x) = \frac{1}{\sqrt{2\pi}}\cdot \mathrm{e}^{-\frac{1}{2}}(\frac{x - \mu}{\sigma})^2$$
+	
+	$$E[X] = \mu$$
+	
+	$$Var(X) = \sigma$$
+\end{Definicija}
+\subsection{Porazdelitev slučajnih spremenljivk}
+\begin{Definicija}
+	Naj bo $(X,Y) : \Omega \to \mathbb{R}^2$ slučajni vektor.
+	$$F_{X,Y}(x,y) = P(X\le x, Y\le y) = \int_{-\infty}^{x}\int_{-\infty}^{y}{p_{X,Y}(x,y) dy dx}$$
+\end{Definicija}
+\begin{Definicija}
+	$$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}{p_{X,Y}(x,y) dy dx} = 1$$
+\end{Definicija}
+\begin{Trditev}
+	Slučajni spremenljivki X in Y sta neodvisni, če velja:
+	$$P(X\le x, Y\le y) =F_{X,Y}(x,y) =F_X(x) \cdot F_Y(y) \quad \forall x,y\in \mathbb{R}$$
+	$$p_{X,Y} (x,y) =p_X(x) \cdot p_Y(y) \quad \forall x,y\in \mathbb{R}$$
+\end{Trditev}
+\begin{Trditev}
+	Naj bosta X in Y neodvisni slučajni spremenljivki. Nadlje naj velja $Z = X + Y$. Gostota slučajne spremenljivke Z je:
+	$$p_Z(z) = \int_{-\infty}^{\infty}{dx}\left(\int_{-\infty}^{z-x}{p_{X,Y}(x,y) dy}\right) = \int_{-\infty}^{\infty}{p_X(x)\cdot p_Y(z-x)dx}$$
 \end{Trditev}
 \end{document}
 
