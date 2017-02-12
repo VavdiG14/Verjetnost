@@ -33,7 +33,7 @@
 \newcommand{\Mod}[1]{\hbox{ (mod } #1)}
 
 \begin{document}
-
+	
 	\thispagestyle{empty}
 	\begin{center}
 		\begin{Large}
@@ -48,247 +48,271 @@
 	\end{center}
 	\newpage
 	\setcounter{page}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Verjetnost%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\section{Osnovna verjetnost}
-\begin{Definicija}
-	Klasična definicija verjstnosti:
-	\\
-	Naj bo  $A\subseteq \omega $ dogodek, n število ugodnih izidov in N vsi možni izidi. Potem je verjetnost definirana:
-	$$P(A) = \frac{n}{N}$$
-\end{Definicija}
-
-\begin{Definicija}
-Verjetnost je preslikava $\mathcal{F}\to [0,1]$, ki zadošča lastnosti:
-\begin{itemize}
-	\item
-	$P(\Omega) = 1$
-	\item
-	$P(A^C) = 1 - P(A) \quad (\Rightarrow P(\emptyset) = 0)$
-	\item
-	Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = 0)_{i\neq j}$.
-	\item
-	$P(\cup_{i =1}^{\infty}A_i) = \sum_{i = 1}^{\infty}P(A_i)$
-\end{itemize}
-\end{Definicija}
-
-\begin{Izrek}
-	Naj bo $\Omega$ prostor izidov verjetnostnega eksperimenta. Dogodki tvorijo družino $\mathcal{F} \subseteq 2^\Omega = P(\Omega)$ z lastnostmi:
-	\begin{enumerate}
-		\item
-		$\Omega \in \mathcal{F}$
-		\item
-		$ A \in \mathcal{F} \Rightarrow A^C \in \mathcal{F} \quad (\Rightarrow \emptyset \in \mathcal{F})$
-		\item
-		$A_1, A_2,\dots \text{števen nabor dogodkov iz } \mathcal{F}$. Potem je $\bigcup A \in \mathcal{F}$
-	\end{enumerate}
-\end{Izrek}
-
-\begin{Trditev}
-	Računanje z dogodki:
-	\begin{itemize}
-		\item
-		$A\cap A = A \quad A\cup A = A$
-		\item
-		$(A\cup B)\cup C = A\cup (B \cup C) \quad (A\cap B) \cap C = A \cap (B\cap C)$
-		\item
-		$(A\cap B)\cup C = (A \cup C ) \cap (B\cup C)$ 
-		\item
-		$(A\cup B)\cap C = (A \cap C ) \cup (B\cap C)$ 
-		\item
-		$(A \cup B)^C = A^C \cap B^C$
-		\item
-		$(A\cap B) ^C = A^C \cup B^C$
-	\end{itemize}
 	
-	Dogodka A in B sta \textbf{nezdružljiva}, če je $A \cap B = \emptyset$.
-\end{Trditev}
-
-
-\begin{Trditev}
-	Princip vključevanja in izključevanja:
-	$$P(A\cup B  ) = P(A) + P(B) - P(A \cap B)$$
-	$$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C ) - P(B \cap C) + P(A\cap B \cap C)$$
-\end{Trditev}
-
-\begin{Trditev}
-	Zveznost verjetnosti
-	\\
-	Če je $A_1 \supseteq A_2 \supseteq \dots \supseteq A_k \supseteq \dots $ padajoče zaporedje dogodkov je 
-	\[
-	P(\bigcap_{k=1}^{\infty} A_k) = \lim\limits_{k \to \infty}{P(A_k)}
-	\]
-\end{Trditev}
-\begin{Trditev}
-	Če je $ B_1 \subseteq B2 \subseteq ... \subseteq B_k \subseteq \dots$ naraščajoče zaporedje dogodkov, velja:
-	\[
-	P(\bigcup_{k=1}^{\infty} B_k) = \lim\limits_{k \to \infty}{P(B_k)}
-	\]
-\end{Trditev}
-%--------------------------------------------------------------------------------------------------------------------
-\section{Pogojna verjetnost}
-\begin{Definicija}
-	Naj bo dogodek $A \subseteq \omega \quad P(A) > 0$.
-	Potem je $B\in \mathcal{F}$ definiramo $$P(A|B) = \frac{P(A \cap B)}{P(A)} \Rightarrow P(A\cap B) = P(A) \cdot P(A|B)$$
-	$P(A|B)$ pravimo pogojna verjetnost in jo beremo kot: verjetnost dogodka A pri pogoju B.
-\end{Definicija}
-
-\subsection{Večfazni ali relejski poskusi}
-\subsection{Formula za popolno verjetnost}
-\begin{Definicija}
-	$H_1,H_2,H_3,...$ (končno mnogo) naborov dogodkov. $\mathcal{F}$ \textbf{je popoln sistem dogodkov}, če velja:
-	\begin{itemize}
-		\item
-		$H_i \cap H_j = \emptyset \quad i \ne j$
-		\item
-		$ P(\bigcap_{i=1}H_i) = \Omega$ (Unija vseh dogodkov je cel prostor)
-		\item
-		$P(H_i) > 0 \quad \forall i$	
-	\end{itemize}
-\end{Definicija}
-\begin{Izrek}
-	Formula za popolno verjetnost je 
-	$$P(A) = \sum_{i = 1}{P(A|H_i) \cdot P(H_i)}$$
-\end{Izrek}
-\begin{Izrek}(Baynsova formula)
-	$$ P(H_j|A) = \frac{P(H_j\cap A)}{P(A)}$$
-\end{Izrek}
-\begin{Izrek}
-	Naj bosta dogodka $A$ in $B \in \mathcal{F}$. Dogodka sta \textbf{neodvisna}, če velja $$P(A\cap B) = P(A) \cdot P(B)$$
-\end{Izrek}
-\begin{Posledica}
-	Naj bosta A in B neodvisna dogodka. Potem so neodvisni tudi naslednji dogodki:
-	\begin{itemize}
-		\item
-		$\{A^c, B\}$
-		\item
-		$\{A, B^c\}$
-		\item
-		$\{A^c, B^c\}$
-	\end{itemize}
-\end{Posledica}
-\begin{Posledica}
-	$A,B,C \in \mathcal{F}$ neodvisne $ \Rightarrow P(A\cap B \cap C) = P(A) \cdot P(B) \cdot P(C)$
-	\\
-	V splošnem $P(A_{i_1} \cap A_{i_2} \cap ...\cap A_{i_k}) = P(A_{i_1})\cdot P(A_{i_2}) \cdot ... \cdot P(A_{i_k})$
-\end{Posledica}
-
-\section{Diskretne slučajne spremenljivke}
-\begin{Definicija}
-	Naj bo $(\Omega, \mathcal{F}, P) $ verjetnostni prostor in funkcija $X: \Omega \to \mathbb{R}$, ki lahko zavzema kvečejmu števno mnogo vrednosti $w_1, w_2,\dots $. Naj bo $H_i$ množica vseh izidov za katere je vrednost funkcije enaka $x_i$. Povedano drugače:
-	$H_i = \{ \omega_i \quad;\quad X(\omega) = x_i\}$. \textbf{$X$ je slučajna spremenljivka}, če je $H_i \in F \quad \forall i$.
-	\\
-	\[
-	  \frac{X}{p} = \begin{pmatrix}
-	  	x_1 & x_2 & x_3 & \cdots & \\       p_1 & p_2 & p_3 & \cdots & 
-	  \end{pmatrix}
-	 \]
-	 $$p_i \ge 0 \quad \sum_{i=1}^{n}{p_i} = 1$$
-\end{Definicija}
-
-\subsection{Binomska porazdelitev}
-\begin{Definicija}
-	Verjetnost, da bomo v n poskusih k-krat videli izzid p.
-	\\
-	Oznaka: \textbf{Bin(n,p)}.
-\end{Definicija}
-\begin{Definicija}
-	$$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$$
-\end{Definicija}
-\begin{Posledica}
-	$$E(X) = n\cdot p$$
-	$$Var(X) = n\cdot p\cdot q$$
-\end{Posledica}
-\subsection{Bernulijeva porazdelitev}
-\begin{Definicija}
-	Indikator dogodka. \textbf{Be(p)}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Verjetnost%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+	\section{Osnovna verjetnost}
+	\begin{Definicija}
+		Klasična definicija verjstnosti:
+		\\
+		Naj bo  $A\subseteq \omega $ dogodek, n število ugodnih izidov in N vsi možni izidi. Potem je verjetnost definirana:
+		$$P(A) = \frac{n}{N}$$
+	\end{Definicija}
+	
+	\begin{Definicija}
+		Verjetnost je preslikava $\mathcal{F}\to [0,1]$, ki zadošča lastnosti:
+		\begin{itemize}
+			\item
+			$P(\Omega) = 1$
+			\item
+			$P(A^C) = 1 - P(A) \quad (\Rightarrow P(\emptyset) = 0)$
+			\item
+			Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = 0)_{i\neq j}$.
+			\item
+			$P(\cup_{i =1}^{\infty}A_i) = \sum_{i = 1}^{\infty}P(A_i)$
+		\end{itemize}
+	\end{Definicija}
+	
+	\begin{Izrek}
+		Naj bo $\Omega$ prostor izidov verjetnostnega eksperimenta. Dogodki tvorijo družino $\mathcal{F} \subseteq 2^\Omega = P(\Omega)$ z lastnostmi:
+		\begin{enumerate}
+			\item
+			$\Omega \in \mathcal{F}$
+			\item
+			$ A \in \mathcal{F} \Rightarrow A^C \in \mathcal{F} \quad (\Rightarrow \emptyset \in \mathcal{F})$
+			\item
+			$A_1, A_2,\dots \text{števen nabor dogodkov iz } \mathcal{F}$. Potem je $\bigcup A \in \mathcal{F}$
+		\end{enumerate}
+	\end{Izrek}
+	
+	\begin{Trditev}
+		Računanje z dogodki:
+		\begin{itemize}
+			\item
+			$A\cap A = A \quad A\cup A = A$
+			\item
+			$(A\cup B)\cup C = A\cup (B \cup C) \quad (A\cap B) \cap C = A \cap (B\cap C)$
+			\item
+			$(A\cap B)\cup C = (A \cup C ) \cap (B\cup C)$ 
+			\item
+			$(A\cup B)\cap C = (A \cap C ) \cup (B\cap C)$ 
+			\item
+			$(A \cup B)^C = A^C \cap B^C$
+			\item
+			$(A\cap B) ^C = A^C \cup B^C$
+		\end{itemize}
+		
+		Dogodka A in B sta \textbf{nezdružljiva}, če je $A \cap B = \emptyset$.
+	\end{Trditev}
+	
+	
+	\begin{Trditev}
+		Princip vključevanja in izključevanja:
+		$$P(A\cup B  ) = P(A) + P(B) - P(A \cap B)$$
+		$$P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C ) - P(B \cap C) + P(A\cap B \cap C)$$
+	\end{Trditev}
+	
+	\begin{Trditev}
+		Zveznost verjetnosti
+		\\
+		Če je $A_1 \supseteq A_2 \supseteq \dots \supseteq A_k \supseteq \dots $ padajoče zaporedje dogodkov je 
+		\[
+		P(\bigcap_{k=1}^{\infty} A_k) = \lim\limits_{k \to \infty}{P(A_k)}
+		\]
+	\end{Trditev}
+	\begin{Trditev}
+		Če je $ B_1 \subseteq B2 \subseteq ... \subseteq B_k \subseteq \dots$ naraščajoče zaporedje dogodkov, velja:
+		\[
+		P(\bigcup_{k=1}^{\infty} B_k) = \lim\limits_{k \to \infty}{P(B_k)}
+		\]
+	\end{Trditev}
+	%--------------------------------------------------------------------------------------------------------------------
+	\section{Pogojna verjetnost}
+	\begin{Definicija}
+		Naj bo dogodek $A \subseteq \omega \quad P(A) > 0$.
+		Potem je $B\in \mathcal{F}$ definiramo $$P(A|B) = \frac{P(A \cap B)}{P(A)} \Rightarrow P(A\cap B) = P(A) \cdot P(A|B)$$
+		$P(A|B)$ pravimo pogojna verjetnost in jo beremo kot: verjetnost dogodka A pri pogoju B.
+	\end{Definicija}
+	
+	\subsection{Večfazni ali relejski poskusi}
+	\subsection{Formula za popolno verjetnost}
+	\begin{Definicija}
+		$H_1,H_2,H_3,...$ (končno mnogo) naborov dogodkov. $\mathcal{F}$ \textbf{je popoln sistem dogodkov}, če velja:
+		\begin{itemize}
+			\item
+			$H_i \cap H_j = \emptyset \quad i \ne j$
+			\item
+			$ P(\bigcup_{i=1}H_i) = \Omega$ (Unija vseh dogodkov je cel prostor)
+			\item
+			$P(H_i) > 0 \quad \forall i$	
+		\end{itemize}
+	\end{Definicija}
+	\begin{Izrek}
+		Formula za popolno verjetnost je 
+		$$P(A) = \sum_{i = 1}{P(A|H_i) \cdot P(H_i)}$$
+	\end{Izrek}
+	\begin{Izrek}(Baynsova formula)
+		$$ P(H_j|A) = \frac{P(H_j\cap A)}{P(A)}$$
+	\end{Izrek}
+	\begin{Izrek}
+		Naj bosta dogodka $A$ in $B \in \mathcal{F}$. Dogodka sta \textbf{neodvisna}, če velja $$P(A\cap B) = P(A) \cdot P(B)$$
+	\end{Izrek}
+	\begin{Posledica}
+		Naj bosta A in B neodvisna dogodka. Potem so neodvisni tudi naslednji dogodki:
+		\begin{itemize}
+			\item
+			$\{A^c, B\}$
+			\item
+			$\{A, B^c\}$
+			\item
+			$\{A^c, B^c\}$
+		\end{itemize}
+	\end{Posledica}
+	\begin{Posledica}
+		$A,B,C \in \mathcal{F}$ neodvisne $ \Rightarrow P(A\cap B \cap C) = P(A) \cdot P(B) \cdot P(C)$
+		\\
+		V splošnem $P(A_{i_1} \cap A_{i_2} \cap ...\cap A_{i_k}) = P(A_{i_1})\cdot P(A_{i_2}) \cdot ... \cdot P(A_{i_k})$
+	\end{Posledica}
+	
+	\section{Diskretne slučajne spremenljivke}
+	\begin{Definicija}
+		Naj bo $(\Omega, \mathcal{F}, P) $ verjetnostni prostor in funkcija $X: \Omega \to \mathbb{R}$, ki lahko zavzema kvečejmu števno mnogo vrednosti $w_1, w_2,\dots $. Naj bo $H_i$ množica vseh izidov za katere je vrednost funkcije enaka $x_i$. Povedano drugače:
+		$H_i = \{ \omega_i \quad;\quad X(\omega) = x_i\}$. \textbf{$X$ je slučajna spremenljivka}, če je $H_i \in F \quad \forall i$.
+		\\
+		\[
+		\frac{X}{p} = \begin{pmatrix}
+		x_1 & x_2 & x_3 & \cdots & \\       p_1 & p_2 & p_3 & \cdots & 
+		\end{pmatrix}
+		\]
+		$$p_i \ge 0 \quad \sum_{i=1}^{n}{p_i} = 1$$
+	\end{Definicija}
+	
+	\subsection{Binomska porazdelitev}
+	\begin{Definicija}
+		Verjetnost, da bomo v n poskusih k-krat videli izzid p.
+		\\
+		Oznaka: \textbf{Bin(n,p)}.
+	\end{Definicija}
+	\begin{Definicija}
+		$$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$$
+	\end{Definicija}
+	\begin{Posledica}
+		$$E(X) = n\cdot p$$
+		$$Var(X) = n\cdot p\cdot q$$
+	\end{Posledica}
+	\subsection{Bernulijeva porazdelitev}
+	\begin{Definicija}
+		Indikator dogodka. \textbf{Be(p)}
 		\[
 		\frac{X}{p} = \begin{pmatrix}
 		0 & 1 \\       1-p & p  
 		\end{pmatrix}
 		\]
-\end{Definicija}
-\begin{Posledica}
-	$$E(X) = p$$
-	$$Var(X) = p\cdot q$$
-\end{Posledica}
-\subsection{Geometrijska porazdelitev}
-\begin{Definicija}
-	Število poskusov do prvega uspešnega izzida. \textbf{Geom(p)}.
-\end{Definicija}
-\begin{Definicija}
-	$$P(X=k) = p \cdot q^{k-1}$$
-\end{Definicija}
-\begin{Posledica}
-	$$E(X) = \frac{1}{p}$$
-	$$Var(X) = \frac{q}{p^2}$$
-\end{Posledica}
-\begin{Opomba}
-	Geometrijska porazdelitev nima spomina!
-\end{Opomba}
-\subsection{Poissonova porazdelitev}
-\begin{Definicija}
-	Število telefonskih klicev, nesreč v določenem času. \textbf{Po($\lambda$)}.
-\end{Definicija}
-\begin{Definicija}
-	$$P(X=k) = \frac{\lambda^k \cdot e^{-\lambda}}{k!}$$
-\end{Definicija}
-\begin{Posledica}
-	$$E(X) = \lambda$$
-	$$Var(X) = \lambda$$
-\end{Posledica}
-\subsection{Matematično upanje}
-\begin{Definicija}
-	Naj bo $X$ slučajna spremneljivka s porazdelitveno shemo:
+	\end{Definicija}
+	\begin{Posledica}
+		$$E(X) = p$$
+		$$Var(X) = p\cdot q$$
+	\end{Posledica}
+	\subsection{Geometrijska porazdelitev}
+	\begin{Definicija}
+		Število poskusov do prvega uspešnega izzida. \textbf{Geom(p)}.
+	\end{Definicija}
+	\begin{Definicija}
+		$$P(X=k) = p \cdot q^{k-1}$$
+	\end{Definicija}
+	\begin{Posledica}
+		$$E(X) = \frac{1}{p}$$
+		$$Var(X) = \frac{q}{p^2}$$
+	\end{Posledica}
+	\begin{Opomba}
+		Geometrijska porazdelitev nima spomina!
+	\end{Opomba}
+	\subsection{Poissonova porazdelitev}
+	\begin{Definicija}
+		Število telefonskih klicev, nesreč v določenem času. \textbf{Po($\lambda$)}.
+	\end{Definicija}
+	\begin{Definicija}
+		$$P(X=k) = \frac{\lambda^k \cdot e^{-\lambda}}{k!}$$
+	\end{Definicija}
+	\begin{Posledica}
+		$$E(X) = \lambda$$
+		$$Var(X) = \lambda$$
+	\end{Posledica}
+	\subsection{Matematično upanje}
+	\begin{Definicija}
+		Naj bo $X$ slučajna spremneljivka s porazdelitveno shemo:
 		\[
 		\frac{X}{p} = \begin{pmatrix}
 		x_1 & x_2 & x_3 & \cdots & x_k \\       p_1 & p_2 & p_3 & \cdots & p_k
 		\end{pmatrix}
 		\]
-	\textbf{Matematično upanje} je:
-	$$ E[X] = \sum_{k}{x_k \cdot p_k}$$
-	pod pogojem, da je $\sum_{k}{|x_k|\cdot p_k} < \infty$
-\end{Definicija}
-\begin{Izrek}
-	Naj bo X,Y slučajni spremenljivki. Tedaj velja:
-	\begin{itemize}
-		\item
-		 $ E[X]$ obstaja natanko tedaj, ko obstaja $ E[|X|]$. Pri tem velja $|E[X]| \le E[|X|]$.
-		 \item
-		 $ E[aX+b] = a \cdot  E[X] + b$
-		 \item
-		 $0 \le X \le Y \Rightarrow  E[X] \le  E[Y]$
-		 \item
-		 Če obstaja $ E[X]$ in $ E[Y]$, takrat velja: $ E[X+Y] =  E[X] +  E[Y]$ 
-	\end{itemize}
-\end{Izrek}
-\subsection{Slučajni vektorji}
-\begin{Definicija}
-	slučajni vektor je n-terica slučajnih spremenljvik: $X = (x_1, x_2,\dots , x_n)$
-	$$ \vv{\bm{x}}: \Omega \to \mathbb{R}^d$$
-	Porazdelitev posamične koordinate rečemo \textbf{robna porazdelitev}.
-\end{Definicija}
-\begin{Definicija}
-	Naj bo $X$ slučajni vektor s koordiantami $x_1,x_2,\dots, x_n$. Slučajne spremenljivke $X_1,X_2, \dots , X_n$ so neodvisne, če velja:
-	$$P(X_1 = x_1, X_2 = x_2,\dotsc, X_n = x_n) = P(X_1 = x_1) \cdot P(X_2 = x_2) \cdot \dotsc \cdot P(X_n = x_n)$$
-\end{Definicija}
-\begin{Posledica}
-	Naslednje trditve so posledica zgornje definicije:
-	\begin{itemize}
-		\item
-		$\forall A_1,\dotsc, A_n \subseteq \mathbb{R} \Rightarrow P(X_1 \in A_1, \dotsc, X_n\in A_n) = P(X_1 \in A_1) \cdot \dotsc \cdot P(X_n \in A_n)$
-		\begin{Opomba}
-			$$P(X\in A ) = \sum_{x\in A}{P(X = x)}$$
-		\end{Opomba}
-		\item
-		Če so $X_1, \dotsc ,X_n$ neodvisni, potem so za $\forall \quad 1\le i_1 \le i_2 \le \dotsc \le i_k\le n$, tudi $X_{i_1}, X_{i_2},\dotsc, X_{i_n}$ neodvisni.
-		\item
-		Če so $X_1, \dotsc ,X_n$ neodvisne, so za vsak $ A_1,\dotsc, A_n \in \mathbb{R}$ dogodki
-		\\
-		$\{X_1\in A_1\}\dotsc \{X_n\in A_n \}$ neodvisni.
-		\item
-		Dogodki $B_1, \dotsc, B_n \in \mathcal{F}$ so neodvisni natanko tedaj, ko so slučajne spremenljivke $ \mathclap{U}$
-	\end{itemize}
-\end{Posledica}
+		\textbf{Matematično upanje} je:
+		$$ E[X] = \sum_{k}{x_k \cdot p_k}$$
+		pod pogojem, da je $\sum_{k}{|x_k|\cdot p_k} < \infty$
+	\end{Definicija}
+	\begin{Izrek}
+		Naj bo X,Y slučajni spremenljivki. Tedaj velja:
+		\begin{itemize}
+			\item
+			$ E[X]$ obstaja natanko tedaj, ko obstaja $ E[|X|]$. Pri tem velja $|E[X]| \le E[|X|]$.
+			\item
+			$ E[aX+b] = a \cdot  E[X] + b$
+			\item
+			$0 \le X \le Y \Rightarrow  E[X] \le  E[Y]$
+			\item
+			Če obstaja $ E[X]$ in $ E[Y]$, takrat velja: $ E[X+Y] =  E[X] +  E[Y]$ 
+		\end{itemize}
+	\end{Izrek}
+	\subsection{Pogojno matematično upanje in pogojna porazdelitev}
+	\begin{Definicija}
+		Naj bo X diskretna slučajna spremenljivka in $A\in \mathcal{F}$, za katero velja $P(A) >0$.\textbf{ Pogojna porazdelitev $X$ pri pogoju A}:
+		\[
+		\frac{X}{p} = \begin{pmatrix}
+		x_1 & \cdots & x_k \\       p_1 & \cdots & p_k
+		\end{pmatrix}
+		\]
+		$$\textnormal{Pri čemer je}\quad p_k= \frac{P(X_k =x_k \cap A)}{P(A)}$$
+	\end{Definicija}
+	
+	\begin{Definicija}
+		Pogojno matematično upanje:
+		$$E[X|A] = \sum_{i}{x_i \cdot P(X=x_i|A)} = \sum_{i}{x_i \cdot \frac{P(\{X_k =x_k\} \cap A)}{P(A)}} = \frac{E[X\cdot \mathcal{U}_A]}{P(A)}$$
+	\end{Definicija}
+	\begin{Definicija}
+		(Formula za popolno matematično upanje)
+		Naj bodo $A_1,A_2, \dotsc$ paroma tuji dogodki in $P(\bigcup_{i=1}A_i) = 1$. Potem za vsako slučajno spremenljivko X velja $$E[X] = \sum_{i}E[X|A_i] \cdot P(A_i)$$ 
+	\end{Definicija}
+	\section{Slučajni vektorji}
+	\begin{Definicija}
+		slučajni vektor je n-terica slučajnih spremenljvik: $X = (x_1, x_2,\dots , x_n)$
+		$$ \vv{\bm{x}}: \Omega \to \mathbb{R}^d$$
+		Porazdelitev posamične koordinate rečemo \textbf{robna porazdelitev}.
+	\end{Definicija}
+	\begin{Definicija}
+		Naj bo $X$ slučajni vektor s koordiantami $x_1,x_2,\dots, x_n$. Slučajne spremenljivke $X_1,X_2, \dots , X_n$ so neodvisne, če velja:
+		$$P(X_1 = x_1, X_2 = x_2,\dotsc, X_n = x_n) = P(X_1 = x_1) \cdot P(X_2 = x_2) \cdot \dotsc \cdot P(X_n = x_n)$$
+	\end{Definicija}
+	\begin{Posledica}
+		Naslednje trditve so posledica zgornje definicije:
+		\begin{itemize}
+			\item
+			$\forall A_1,\dotsc, A_n \subseteq \mathbb{R} \Rightarrow P(X_1 \in A_1, \dotsc, X_n\in A_n) = P(X_1 \in A_1) \cdot \dotsc \cdot P(X_n \in A_n)$
+			\begin{Opomba}
+				$$P(X\in A ) = \sum_{x\in A}{P(X = x)}$$
+			\end{Opomba}
+			\item
+			Če so $X_1, \dotsc ,X_n$ neodvisni, potem so za $\forall \quad 1\le i_1 \le i_2 \le \dotsc \le i_k\le n$, tudi $X_{i_1}, X_{i_2},\dotsc, X_{i_n}$ neodvisni.
+			\item
+			Če so $X_1, \dotsc ,X_n$ neodvisne, so za vsak $ A_1,\dotsc, A_n \in \mathbb{R}$ dogodki
+			\\
+			$\{X_1\in A_1\}\dotsc \{X_n\in A_n \}$ neodvisni.
+			\item
+			Dogodki $B_1, \dotsc, B_n \in \mathcal{F}$ so neodvisni natanko tedaj, ko so slučajne spremenljivke $ \mathcal{U}_{B_1},\dotsc, \mathcal{U}_{B_n}$ neodvisne.
+			\item
+			Če so $X_1, \dotsc, X_n$ neodvisne in $f_1,\dotsc,f_n : \mathbb{R} \to \mathbb{R}$ so tudi $f_1(X_1),\dotsc, f_n(X_n)$ neodvisne.
+			\item
+			Denimo, da sta X in Y neodvisna. Potem velja:
+			$$E[XY] = E[X] \cdot E[Y]$$
+		\end{itemize}
+	\end{Posledica}
 \end{document}
 
