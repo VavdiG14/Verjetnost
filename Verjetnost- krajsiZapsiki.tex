@@ -52,26 +52,12 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Verjetnost%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 	\section{Osnovna verjetnost}
 	\begin{Definicija}
-		Klasična definicija verjstnosti:
+		Klasična definicija verjetnosti:
 		\\
-		Naj bo  $A\subseteq \omega $ dogodek, n število ugodnih izidov in N vsi možni izidi. Potem je verjetnost definirana:
+		Naj bo  $A\subseteq \Omega $ dogodek, n število ugodnih izidov in N vsi možni izidi. Potem je verjetnost definirana:
 		$$P(A) = \frac{n}{N}$$
 	\end{Definicija}
-	
-	\begin{Definicija}
-		Verjetnost je preslikava $\mathcal{F}\to [0,1]$, ki zadošča lastnosti:
-		\begin{itemize}
-			\item
-			$P(\Omega) = 1$
-			\item
-			$P(A^C) = 1 - P(A) \quad (\Rightarrow P(\emptyset) = 0)$
-			\item
-			Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = 0)_{i\neq j}$.
-			\item
-			$P(\cup_{i =1}^{\infty}A_i) = \sum_{i = 1}^{\infty}P(A_i)$
-		\end{itemize}
-	\end{Definicija}
-	
+
 	\begin{Izrek}
 		Naj bo $\Omega$ prostor izidov verjetnostnega eksperimenta. Dogodki tvorijo družino $\mathcal{F} \subseteq 2^\Omega = P(\Omega)$ z lastnostmi:
 		\begin{enumerate}
@@ -103,7 +89,20 @@
 		
 		Dogodka A in B sta \textbf{nezdružljiva}, če je $A \cap B = \emptyset$.
 	\end{Trditev}
-	
+		
+	\begin{Definicija}
+		Verjetnost je preslikava $\mathcal{F}\to [0,1]$, ki zadošča lastnosti:
+		\begin{itemize}
+			\item
+			$P(\Omega) = 1$
+			\item
+			$P(A^C) = 1 - P(A) \quad (\Rightarrow P(\emptyset) = 0)$
+			\item
+			Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = 0)_{i\neq j}$.
+			\item
+			$P(\cup_{i =1}^{\infty}A_i) = \sum_{i = 1}^{\infty}P(A_i)$
+		\end{itemize}
+	\end{Definicija}
 	
 	\begin{Trditev}
 		Princip vključevanja in izključevanja:
@@ -278,7 +277,7 @@
 		$$E[X|A] = \sum_{i}{x_i \cdot P(X=x_i|A)} = \sum_{i}{x_i \cdot \frac{P(\{X_k =x_k\} \cap A)}{P(A)}} = \frac{E[X\cdot \mathcal{U}_A]}{P(A)}$$
 	\end{Definicija}
 	\begin{Definicija}
-		(Formula za popolno matematično upanje)
+		\textbf{(Formula za popolno matematično upanje)} \\
 		Naj bodo $A_1,A_2, \dotsc$ paroma tuji dogodki in $P(\bigcup_{i=1}A_i) = 1$. Potem za vsako slučajno spremenljivko X velja $$E[X] = \sum_{i}E[X|A_i] \cdot P(A_i)$$ 
 	\end{Definicija}
 	\section{Slučajni vektorji}
@@ -288,7 +287,7 @@
 		Porazdelitev posamične koordinate rečemo \textbf{robna porazdelitev}.
 	\end{Definicija}
 	\begin{Definicija}
-		Naj bo $X$ slučajni vektor s koordiantami $x_1,x_2,\dots, x_n$. Slučajne spremenljivke $X_1,X_2, \dots , X_n$ so neodvisne, če velja:
+		Slučajne spremenljivke $X_1,X_2, \dots , X_n$ so neodvisne, če velja:
 		$$P(X_1 = x_1, X_2 = x_2,\dotsc, X_n = x_n) = P(X_1 = x_1) \cdot P(X_2 = x_2) \cdot \dotsc \cdot P(X_n = x_n)$$
 	\end{Definicija}
 	\begin{Posledica}
@@ -316,7 +315,7 @@
 	\end{Posledica}
 \section{Splošne slučajne spremenljivke}
 \begin{Definicija}
-	Naj bo verjetnostni prostor definiran kot: $(\Omega, \mathcal{F},P)$. Nadalje naj bo $X: \Omega \to \mathbb{R}$. Zahteva, da je X slučajna spremenljivka : $\{ X\le x\} = \{\omega ; X(\omega) \le x\} \in \mathcal{F}$. Potem je $$F_X(x)  = P(X \le x)$$ dobro definirana funkcija $\mathbb{R}\to \mathbb{R}$ in jo imenujemo \textbf{porazdelitvena funkicja}.
+	Naj bo verjetnostni prostor definiran kot: $(\Omega, \mathcal{F},P)$. Nadalje naj bo $X: \Omega \to \mathbb{R}$. Zahteva, da je X slučajna spremenljivka : $\{ X\le x\} = \{\omega ; X(\omega) \le x\} \in \mathcal{F}$. Potem je $$F_X(x)  = P(X \le x)$$ dobro definirana funkcija $\mathbb{R}\to \mathbb{R}$ in jo imenujemo \textbf{porazdelitvena funkcija}.
 \end{Definicija}
 \begin{Trditev}
 	Lastnosti porazdelitvene funkcije:
@@ -336,7 +335,7 @@
 		\item
 		Točk, kjer je porazdelitvena funkcija nezvezna (ima skok) je kvečejmu števno mnogo.
 		\item
-		$$\lim\limits_{x \to \infty}{F_X(x)} = 1$$  
+		$\lim\limits_{x \to \infty}{F_X(x)} = 1$
 	\end{itemize}
 \end{Trditev}
 \begin{Definicija}
@@ -350,10 +349,12 @@
 	$$\left( F_X(x) \right)' = \left(\int_{-\infty}^{x}{p_X(t)dt}\right)'= p_X(x)$$
 \end{Trditev}
 \begin{Trditev}(Lastnosti gostote)
-
-		$$p_X(x) \ge 0$$
-		
-		$$\int_{-\infty}^{\infty}{p_X(t) dt} = 1 $$
+\begin{itemize}
+	\item
+	$p_X(x) \ge 0$
+	\item	
+	$\int_{-\infty}^{\infty}{p_X(t) dt} = 1 $
+\end{itemize}
 \end{Trditev}
 \subsection{Enakomerno zvezna na [a,b] }
 \begin{Definicija}
@@ -418,5 +419,79 @@
 	Naj bosta X in Y neodvisni slučajni spremenljivki. Nadalje naj velja $Z = X + Y$. Gostota slučajne spremenljivke Z je:
 	$$p_Z(z) = \int_{-\infty}^{\infty}{dx}\left(\int_{-\infty}^{z-x}{p_{X,Y}(x,y) dy}\right) = \int_{-\infty}^{\infty}{p_X(x)\cdot p_Y(z-x)dx}$$
 \end{Trditev}
+\subsection{Matematično upanje zveznih slučajnih spremenljivk}
+\begin{Definicija}
+Će ima slučajna spremenljivka X gostoto $p_X(x)$ je $$E[X] = \int_{-\infty}^{\infty}{x\cdot p_X(x) dx}$$  pod pogojem da $\int_{-\infty}^{\infty}{|x| \cdot p_X(x) dx} < \infty$.
+\end{Definicija}
+\begin{Izrek}
+Naj bo X slučajna spremenljivka in $p_X(x)$ gostota. Nadalje naj bo $f: \mathbb{R} \to \mathbb{R}$ zvezna, razen morda v končno mnogo točkah. Iz tega sledi, da je $f(X)$ slučajna spremenljivka, njeno matematično upanje je:
+$$E[f(X)] =  \int_{-\infty}^{\infty}{f(x)\cdot p_X(x) dx}$$
+pod pogojem da integral absolutno konvergira.
+\end{Izrek}
+\subsection{Pogojna porazdelitvena funkcija}
+\begin{Definicija}
+Naj bo X zvezna slučajna spremenljivka in naj bo A dogodek iz $\mathcal{F}$. Pogojna porazdelitvena funckija je definirana kot:
+$$F_{X|A}(x) = P(X\le x | A) = \frac{P(X\le x, A)}{P(A)}$$
+\end{Definicija}
+\begin{Definicija}
+Naj bo X zvezna slučajna spremenljivka in naj bo A dogodek iz $\mathcal{F}$. Potem obstaja pogojna gostota definiran kot odvod pogojne porazdelitvene funkcije $F_{X|A}$
+\end{Definicija}
+\begin{Definicija}
+Če sta X in Y slučajni spremenljivki na $(\Omega,\mathcal{F},P)$, potem obstaja pogojna porazdelitev X glede na Y ( $  P(X \le x | Y \le y) $ ) za skoraj vsak $y\in \mathbb{R}$. Pogojno gostota je tako:
+$$p_{X|Y}(x,y) = \frac{p_{X,Y}(x,y)}{p_X(x)}$$
+pri čemer je $$p_X(x) = \int_{-\infty}^{\infty} p_{X,Y}(x,y) dx$$ 
+\end{Definicija}
+\subsection{Mediana}
+\begin{Definicija}
+Naj bo X slučajna spremenljvka in $a\in \mathbb{R}$. Število $a$ je \textbf{mediana}, če velja: $$P(X\le a) = \frac{1}{2}$$
+\end{Definicija}
+\subsection{Varianca}
+\begin{Definicija}
+Varianca ali disprezija je mera, kako slučajna spremenljivka oscilira okrog svoje pričakovane vrednosti. $$Var(X) = E [( X - E[X])^2] = E[X^2] - E[X]^2$$
+\end{Definicija}
+\begin{Definicija}
+(Standardni odklon):
+$$\sigma = \sqrt{Var(X)}$$
+\end{Definicija}
+\begin{Trditev}
+Naj bo X slučajna spremenljivka in naj $Var(X)$ obstaja. Potem sledi:
+\begin{itemize}
+\item
+$Var(X) \ge 0$ in $Var(X) = 0 \iff x = konst.$
+\item
+$Var(X + b) = Var(X)$
+\item
+$Var(a \cdot X) = a^2 \cdot Var(X)$
+\end{itemize}
+\end{Trditev}
+\subsection{Kovarianca}
+\begin{Definicija}
+Naj bosta X in Y slučajni spremenljivki na $(\Omega,\mathcal{F},P)$. Nadalje naj obstaja $E[X], E[Y]$, ter $E[XY]$. \textbf{Kovarianca} je:
+$$Cov(X,Y) = E[XY] - E[X] \cdot E[Y]$$
+\end{Definicija}
+\begin{Trditev} 
+Naj bojo X,Y,Z slučajne spremenljivke na  $(\Omega,\mathcal{F},P)$. Nadlaje naj velja, da sta števili $a$ in $b\in \mathbb{R}$. Potem velja:
+\begin{itemize}
+\item
+$Cov(a\cdot X + b\cdot Y, Z) = a \cdot Cov(X,Z) + b\cdot Cov(Y,Z)$
+\item
+$|Cov(X,Y)| \le \sigma (X) + \sigma (Y)$
+\item
+$Cov(X,X) = Var(X)$
+\end{itemize}
+\end{Trditev}
+\begin{Izrek}
+Naj bosta X in Y neodvisni (z drugim momentom). Takrat velja:
+$$Cov(X,Y) = E[XY] - E[X] \cdot E[Y] = 0$$
+\end{Izrek}
+\begin{Posledica}
+Naj bosta X in Y neodvisni. Takrat velja:
+$$Var(X + Y) = Var(X) + Var(Y)$$
+\end{Posledica}
+\begin{Definicija}
+(Korelacijski koeficient)
+$$\rho  = \frac{Cov(X,Y)}{\sigma (X) \cdot \sigma (Y)}$$
+\end{Definicija}
+
 \end{document}
 
