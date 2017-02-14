@@ -98,7 +98,7 @@
 			\item
 			$P(A^C) = 1 - P(A) \quad (\Rightarrow P(\emptyset) = 0)$
 			\item
-			Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = 0)_{i\neq j}$.
+			Naj bodo $(A_i)_{i \ge 1} $ paroma nezdružljivi dogodki $(A_i \cap A_j = \emptyset)_{i\neq j}$.
 			\item
 			$P(\cup_{i =1}^{\infty}A_i) = \sum_{i = 1}^{\infty}P(A_i)$
 		\end{itemize}
@@ -491,7 +491,25 @@ $$Var(X + Y) = Var(X) + Var(Y)$$
 \begin{Definicija}
 (Korelacijski koeficient)
 $$\rho  = \frac{Cov(X,Y)}{\sigma (X) \cdot \sigma (Y)}$$
+za $\sigma (X) \cdot \sigma (Y) \neq 0$
 \end{Definicija}
-
+\section{Konvergenca slučajnih spremenljivk v porazdelitvi}
+\begin{Definicija}
+$ \{ X_n\}_{n \ge 0}$ zaporedje slučajnih spremenljivk in naj $ X_n$ konvergira proti X, če velja $$P(X_n \le x) = F_{X_n}(x)\xrightarrow[n\to \infty]{}  P(X \le x) = F_X(x) \quad \forall x \in \mathbb{R}$$ za katerega je $F_X(x)$ zvezna funkcija.
+\\
+Ekvivalentno:
+$$E[f(X_n)]  \xrightarrow[n\to \infty]{} E[f(X)]$$
+\end{Definicija}
+\begin{Posledica}
+Če je $n >>0$ in $p << 1$, potem je $Bin(n,p) \approx Pois(n\cdot p)$
+\end{Posledica}
+\begin{Posledica} (Poseben primer centralno limitnega izreka) - Laplacova aproksimacija za fiksen p
+$$\frac{Bin(n,p) - n\cdot p}{\sqrt{n\cdot p \cdot (1-p)}} \xrightarrow[n\to \infty]{}  \mathcal{N}(0,1)$$
+\end{Posledica}
+\begin{Posledica} (Laplacova aproksimacija)
+\\
+Za $n>> 0:$
+$$Bin(n,p) \approx \mathcal{N}({n p, np(1-p)})$$
+\end{Posledica}
 \end{document}
 
